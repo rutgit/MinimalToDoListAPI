@@ -7,7 +7,7 @@ Built with Entity Framework Core and developed in Visual Studio Code.
 ## Features
 - Lightweight and optimized RESTful endpoints
 - CRUD operations: Create, Retrieve, Update, Delete tasks
-- Uses SQLite for database interactions
+- Uses MySQL for database interactions
 
 ## Technologies Used
 - .NET 8
