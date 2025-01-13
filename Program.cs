@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"),
+    options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB-local"),
         new MySqlServerVersion(new Version(8, 0, 21))));
 
 builder.Services.AddScoped<TodoService>();
@@ -29,15 +29,15 @@ var app = builder.Build();
 app.UseCors("AllowSpecificOrigin");
 
 // Enable Swagger middleware
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
         options.RoutePrefix = string.Empty; // Optional: set Swagger UI to load at the root URL
     });
-}
+// }
 
 // Map endpoints with more descriptive paths
 app.MapGet("/todos", async (TodoService _todoService) =>
@@ -63,5 +63,7 @@ app.MapDelete("/todos/{id}", async (TodoService _todoService, int id) =>
     var result = await _todoService.DeleteItem(id);  // Await asynchronous method
     return Results.Ok(result);  // Return the result of deleting the item asynchronously
 });
+
+app.MapGet("/",()=>"TodoList is running");
 
 app.Run();

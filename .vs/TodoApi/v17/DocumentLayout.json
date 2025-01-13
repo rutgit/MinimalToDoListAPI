@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\This User\\Desktop\\Practicode\\TodoApi\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\This User\\Desktop\\Practicode\\TodoList\\TodoApi- Server\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F58FA4A-B437-4E6D-84D3-4695A3DE657F}|TodoApi.csproj|c:\\users\\this user\\desktop\\practicode\\todolist\\todoapi- server\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9F58FA4A-B437-4E6D-84D3-4695A3DE657F}|TodoApi.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\Practicode\\TodoList\\TodoApi- Server\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\Practicode\\TodoList\\TodoApi- Server\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-13T16:40:49.868Z",
+              "EditorCaption": ""
             }
           ]
         }

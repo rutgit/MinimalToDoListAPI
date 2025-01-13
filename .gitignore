@@ -1,0 +1,8 @@
+.vs/
+obj/
+*.bin
+*.suo
+*.cache
+*.nuget.*
+*.vscode/
+*.dtbcache.v2
