@@ -3,10 +3,34 @@ using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB-CleverCloud"),
-        new MySqlServerVersion(new Version(8, 0, 21))));
+// // Add services to the container.
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB-CleverCloud"),
+//         new MySqlServerVersion(new Version(8, 0, 21))));
+
+// Retrieve the connection string from environment variables
+var connectionStringLocal = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_LOCAL")
+                           ?? throw new Exception("Local connection string not found!");
+
+var connectionStringRemote = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_REMOTE")
+                            ?? throw new Exception("Remote connection string not found!");
+
+// Depending on the environment, use the appropriate connection string
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+if (environment == "Development")
+{
+    builder.Services.AddDbContext<ToDoDbContext>(options =>
+        options.UseMySql(connectionStringLocal,
+            new MySqlServerVersion(new Version(8, 0, 21))));
+}
+else
+{
+    builder.Services.AddDbContext<ToDoDbContext>(options =>
+        options.UseMySql(connectionStringRemote,
+            new MySqlServerVersion(new Version(8, 0, 21))));
+}
+
 
 builder.Services.AddScoped<TodoService>();
 
