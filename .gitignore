@@ -1,4 +1,5 @@
 .vs/
+bin/
 obj/
 *.bin
 *.suo
@@ -6,3 +7,5 @@ obj/
 *.nuget.*
 *.vscode/
 *.dtbcache.v2
+appsettings.Development.json
+appsettings.json

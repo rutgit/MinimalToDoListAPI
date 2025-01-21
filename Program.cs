@@ -32,7 +32,8 @@ app.UseCors("AllowSpecificOrigin");
 // if (app.Environment.IsDevelopment())
 // {
     app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    app.UseSwaggerUI
+    (options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
         options.RoutePrefix = string.Empty; // Optional: set Swagger UI to load at the root URL
@@ -42,8 +43,16 @@ app.UseCors("AllowSpecificOrigin");
 // Map endpoints with more descriptive paths
 app.MapGet("/todos", async (TodoService _todoService) =>
 {
-    var items = await _todoService.GetItems();  // Await asynchronous method
-    return Results.Ok(items);  // Return the items asynchronously
+     try
+    {
+        var items = await _todoService.GetItems();
+        return Results.Ok(items);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error fetching todos: {ex.Message}");
+        return Results.StatusCode(500);
+    }
 });
 
 app.MapPost("/todos", async (TodoService _todoService, Item item) =>
@@ -65,5 +74,7 @@ app.MapDelete("/todos/{id}", async (TodoService _todoService, int id) =>
 });
 
 app.MapGet("/",()=>"TodoList is running");
+
+app.MapFallback(() => Results.NotFound("The requested endpoint does not exist."));
 
 app.Run();

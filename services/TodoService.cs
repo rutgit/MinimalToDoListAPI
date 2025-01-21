@@ -23,7 +23,8 @@ public class TodoService
         catch (Exception ex)
         {
             // Log exception here if necessary
-            throw new Exception("Error retrieving items", ex);
+            Console.WriteLine($"Error retrieving items: {ex.Message}"); // Log the exception
+            throw;
         }
     }
 
