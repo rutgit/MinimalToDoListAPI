@@ -3,11 +3,6 @@ using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// // Add services to the container.
-// builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("DB_CONNECTION_STRING_REMOTE"),
-//         new MySqlServerVersion(new Version(8, 0, 21))));
-
  var connectionString = builder.Configuration.GetConnectionString("DB_CONNECTION_STRING_REMOTE");
 
 if (string.IsNullOrEmpty(connectionString))
